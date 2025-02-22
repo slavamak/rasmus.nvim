@@ -45,7 +45,7 @@ local set_groups = function()
     DiffDelete = { fg = c.bright_red, bg = c.none, reverse = true }, -- diff mode: Deleted line
     DiffText = { fg = c.fg, bg = c.none, reverse = true }, -- diff mode: Changed text within a changed line
     ErrorMsg = { fg = c.red }, -- error messages
-    Folded = { fg = c.gray05, bg = c.none, italic = true },
+    Folded = { fg = c.gray05, bg = c.none },
     FoldColumn = { fg = c.blue },
     IncSearch = { reverse = true },
     LineNr = { fg = c.gray05 },
@@ -59,14 +59,14 @@ local set_groups = function()
     PmenuSbar = { fg = c.fg, bg = c.gray02 },
     PmenuThumb = { fg = c.fg, bg = c.gray05 },
     Question = { fg = c.green, bold = true },
-    QuickFixLine = { fg = c.blue, bg = c.gray01, bold = true, italic = true },
+    QuickFixLine = { fg = c.blue, bg = c.gray01 },
     qfLineNr = { fg = c.blue, bg = c.gray01 },
     Search = { reverse = true },
     SpecialKey = { fg = c.gray03 },
-    SpellBad = { fg = c.red, bg = c.none, italic = true, undercurl = true },
-    SpellCap = { fg = c.blue, bg = c.none, italic = true, undercurl = true },
-    SpellLocal = { fg = c.cyan, bg = c.none, italic = true, undercurl = true },
-    SpellRare = { fg = c.cyan, bg = c.none, italic = true, undercurl = true },
+    SpellBad = { fg = c.red, bg = c.none, undercurl = true },
+    SpellCap = { fg = c.blue, bg = c.none, undercurl = true },
+    SpellLocal = { fg = c.cyan, bg = c.none, undercurl = true },
+    SpellRare = { fg = c.cyan, bg = c.none, undercurl = true },
     StatusLine = { fg = c.gray07, bg = c.gray01 },
     StatusLineNC = { fg = c.gray06, bg = c.gray01 },
     StatusLineTerm = { fg = c.gray07, bg = c.gray01 },
@@ -98,9 +98,9 @@ local set_groups = function()
     Structure = { fg = c.fg }, -- struct, union, enum, etc.
     Constant = { fg = c.cyan }, -- any constant
     Comment = { fg = c.gray05, bg = c.none, bold = cfg.comment_style.bold, italic = cfg.comment_style.italic }, -- italic comments
-    Conditional = { fg = c.blue, bg = c.none, bold = cfg.keyword_style.bold, italic = cfg.keyword_style.italic }, -- italic if, then, else, endif, switch, etc.
+    Conditional = { fg = c.blue, bg = c.none, bold = cfg.conditional_style.bold, italic = cfg.conditional_style.italic }, -- italic if, then, else, endif, switch, etc.
     Keyword = { fg = c.blue, bg = c.none, bold = cfg.keyword_style.bold, italic = cfg.keyword_style.italic }, -- italic for, do, while, etc.
-    Repeat = { fg = c.blue, bg = c.none, bold = cfg.keyword_style.bold, italic = cfg.keyword_style.italic }, -- italic any other keyword
+    Repeat = { link = 'Conditional' }, -- italic any other keyword
     Boolean = { fg = c.cyan, bg = c.none, bold = cfg.boolean_style.bold, italic = cfg.boolean_style.italic }, -- true , false
     Function = { fg = c.blue, bg = c.none, bold = cfg.function_style.bold, italic = cfg.function_style.italic },
     Identifier = { fg = c.blue, bg = c.none }, -- any variable name
@@ -118,7 +118,7 @@ local set_groups = function()
     Macro = { fg = c.blue }, -- same as Define
     Typedef = { fg = c.cyan }, -- A typedef
     PreCondit = { fg = c.cyan }, -- preprocessor #if, #else, #endif, etc.
-    Special = { fg = c.blue, bg = c.none, italic = true }, -- any special symbol
+    Special = { fg = c.blue, bg = c.none }, -- any special symbol
     SpecialChar = { fg = c.cyan }, -- special character in a constant
     Tag = { fg = c.yellow }, -- you can use CTRL-] on this
     Delimiter = { fg = c.gray07 }, -- character that needs attention like , or .
@@ -127,12 +127,12 @@ local set_groups = function()
     Underlined = { fg = c.cyan, bg = c.none, underline = true }, -- text that stands out, HTML links
     Ignore = { fg = c.gray07 }, -- left blank, hidden
     Error = { fg = c.red, bg = c.none, bold = true, underline = true }, -- any erroneous construct
-    Todo = { fg = c.cyan, bg = c.none, bold = true, italic = true }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Todo = { fg = c.cyan, bg = c.none, bold = true }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
     -- HTML
-    htmlArg = { fg = c.fg, italic = true },
+    htmlArg = { fg = c.fg },
     htmlBold = { fg = c.fg, bg = c.none, bold = true },
     htmlEndTag = { fg = c.fg },
-    htmlStyle = { fg = c.cyan, bg = c.none, italic = true },
+    htmlStyle = { fg = c.cyan, bg = c.none },
     htmlLink = { fg = c.cyan, underline = true },
     htmlSpecialChar = { fg = c.yellow },
     htmlSpecialTagName = { fg = c.blue, bold = true },
@@ -158,7 +158,7 @@ local set_groups = function()
     markdownIdDeclaration = { fg = c.blue },
     markdownIdDelimiter = { fg = c.cyan },
     markdownLinkDelimiter = { fg = c.gray05 },
-    markdownLinkText = { fg = c.bright_white, italic = true },
+    markdownLinkText = { fg = c.bright_white },
     markdownListMarker = { fg = c.yellow },
     markdownOrderedListMarker = { fg = c.yellow },
     markdownRule = { fg = c.gray05 },
@@ -180,9 +180,9 @@ local set_groups = function()
     TSBoolean = { fg = c.cyan, bg = c.none, bold = cfg.boolean_style.bold, italic = cfg.boolean_style.italic }, -- true or false
     TSCharacter = { fg = c.cyan }, -- For characters.
     TSComment = { fg = c.gray05, bg = c.none, bold = cfg.comment_style.bold, italic = cfg.comment_style.italic }, -- For comment blocks.
-    TSConditional = { fg = c.blue, bold = cfg.keyword_style.bold, italic = cfg.keyword_style.italic }, -- For keywords related to conditionnals.
+    TSConditional = { fg = c.blue, bold = cfg.conditional_style.bold, italic = cfg.conditional_style.italic }, -- For keywords related to conditionnals.
     TSConstant = { fg = c.fg }, -- For constants
-    TSConstBuiltin = { fg = c.cyan, italic = true }, -- For constants that are built in the language: `nil` in Lua.
+    TSConstBuiltin = { fg = c.cyan }, -- For constants that are built in the language: `nil` in Lua.
     TSConstMacro = { fg = c.cyan }, -- For constants that are defined by macros: `NULL` in C.
     TSConstructor = { fg = c.gray07 }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
     TSError = { fg = c.red }, -- For syntax/parser errors.
@@ -192,7 +192,7 @@ local set_groups = function()
     TSFunction = { fg = c.fg, bold = cfg.function_style.bold, italic = cfg.function_style.italic }, -- For fuction (calls and definitions).
     TSFuncBuiltin = { fg = c.fg, bold = cfg.function_style.bold, italic = cfg.function_style.italic }, -- For builtin functions: `table.insert` in Lua.
     TSFuncMacro = { fg = c.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-    TSInclude = { fg = c.blue, italic = true }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+    TSInclude = { fg = c.blue }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
     TSKeyword = { fg = c.blue, bold = cfg.keyword_style.bold, italic = cfg.keyword_style.italic }, -- For keywords that don't fall in previous categories.
     TSKeywordFunction = { fg = c.blue, bold = cfg.function_style.bold, italic = cfg.function_style.italic }, -- For keywords used to define a fuction.
     TSKeywordOperator = { fg = c.yellow }, -- For operators that are English words, e.g. `and`, `as`, `or`.
@@ -209,14 +209,14 @@ local set_groups = function()
     TSPunctDelimiter = { fg = c.gray05 }, -- For delimiters ie: `.`
     TSPunctBracket = { fg = c.gray05 }, -- For brackets and parens.
     TSPunctSpecial = { fg = c.green }, -- For special punctutation that does not fall in the catagories before.
-    TSRepeat = { fg = c.blue, bold = cfg.keyword_style.bold, italic = cfg.keyword_style.italic }, -- For keywords related to loops.
+    TSRepeat = { ling = 'TSConditional' }, -- For keywords related to loops.
     TSString = { fg = c.cyan }, -- For strings.
     TSStringRegex = { fg = c.green }, -- For regexes.
     TSStringEscape = { fg = c.cyan }, -- For escape characters within a string.
     TSStringSpecial = { fg = c.green }, -- For strings with special meaning that don't fit into the above categories.
     TSSymbol = { fg = c.green }, -- For identifiers referring to symbols or atoms.
     TSTag = { fg = c.yellow }, -- Tags like html tag names.
-    TSTagAttribute = { fg = c.fg, italic = true }, -- For html tag attributes.
+    TSTagAttribute = { fg = c.fg }, -- For html tag attributes.
     TSTagDelimiter = { fg = c.gray05 }, -- Tag delimiter like `<` `>` `/`
     TSText = { fg = c.fg }, -- For strings considered text in a markup language.
     TSStrong = { fg = c.bright_white, bold = true }, -- For text to be represented in bold.
@@ -230,9 +230,9 @@ local set_groups = function()
     TSTextReference = { fg = c.yellow }, -- For footnotes, text references, citations.
     TSEnvironment = { fg = c.blue }, -- For text environments of markup languages.
     TSEnvironmentName = { fg = c.bright_blue }, -- For the name/the string indicating the type of text environment.
-    TSNote = { fg = c.blue, italic = true }, -- Text representation of an informational note.
-    TSWarning = { fg = c.yellow, italic = true }, -- Text representation of a warning note.
-    TSDanger = { fg = c.red, italic = true }, -- Text representation of a danger note.
+    TSNote = { fg = c.blue }, -- Text representation of an informational note.
+    TSWarning = { fg = c.yellow }, -- Text representation of a warning note.
+    TSDanger = { fg = c.red }, -- Text representation of a danger note.
     TSType = { fg = c.fg }, -- For types.
     TSTypeBuiltin = { fg = c.blue }, -- For builtin types.
     TSVariable = { fg = c.fg, bold = cfg.variable_style.bold, italic = cfg.variable_style.italic }, -- Any variable name that does not have another highlight.
@@ -304,7 +304,7 @@ local set_groups = function()
     TelescopeMatching = { fg = c.yellow },
     TelescopePromptPrefix = { fg = c.blue },
     -- NvimTree
-    NvimTreeRootFolder = { fg = c.cyan, italic = true },
+    NvimTreeRootFolder = { fg = c.cyan, bold = true },
     NvimTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg },
     NvimTreeImageFile = { fg = c.magenta },
     NvimTreeExecFile = { fg = c.green },
@@ -332,7 +332,7 @@ local set_groups = function()
     ALEVirtualTextInfo = { fg = c.blue },
     -- WhichKey
     WhichKey = { fg = c.bright_cyan },
-    WhichKeyGroup = { fg = c.yellow, italic = true },
+    WhichKeyGroup = { fg = c.yellow },
     WhichKeyDesc = { fg = c.blue },
     WhichKeySeperator = { fg = c.gray05 },
     WhichKeyFloating = { bg = c.gray01 },
