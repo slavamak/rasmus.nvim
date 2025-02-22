@@ -209,7 +209,7 @@ local set_groups = function()
     TSPunctDelimiter = { fg = c.gray05 }, -- For delimiters ie: `.`
     TSPunctBracket = { fg = c.gray05 }, -- For brackets and parens.
     TSPunctSpecial = { fg = c.green }, -- For special punctutation that does not fall in the catagories before.
-    TSRepeat = { ling = 'TSConditional' }, -- For keywords related to loops.
+    TSRepeat = { link = 'TSConditional' }, -- For keywords related to loops.
     TSString = { fg = c.cyan }, -- For strings.
     TSStringRegex = { fg = c.green }, -- For regexes.
     TSStringEscape = { fg = c.cyan }, -- For escape characters within a string.
