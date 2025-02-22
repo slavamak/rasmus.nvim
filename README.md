@@ -75,20 +75,22 @@ colorscheme rasmus
 
 > Configuration needs to be set **BEFORE** loading the color scheme with `colorscheme rasmus`
 
-| Option                  | Default | Description              |
-| ----------------------- | ------- | ------------------------ |
-| rasmus_italic_comments  | `true`  | Make comments italic     |
-| rasmus_italic_keywords  | `false` | Make keywords italic     |
-| rasmus_italic_booleans  | `false` | Make booleans italic     |
-| rasmus_italic_functions | `false` | Make functions italic    |
-| rasmus_italic_variables | `false` | Make variables italic    |
-| rasmus_bold_comments    | `false` | Make comments bold       |
-| rasmus_bold_keywords    | `false` | Make keywords bold       |
-| rasmus_bold_booleans    | `false` | Make booleans bold       |
-| rasmus_bold_functions   | `false` | Make functions bold      |
-| rasmus_bold_variables   | `false` | Make variables bold      |
-| rasmus_transparent      | `false` | Disable background color |
-| rasmus_variant          | `dark`  | Colorscheme variant      |
+| Option                      | Default | Description              |
+| -----------------------     | ------- | ------------------------ |
+| rasmus_italic_conditionals  | `false` | Make conditional italic  |
+| rasmus_italic_comments      | `false` | Make comments italic     |
+| rasmus_italic_keywords      | `false` | Make keywords italic     |
+| rasmus_italic_booleans      | `false` | Make booleans italic     |
+| rasmus_italic_functions     | `false` | Make functions italic    |
+| rasmus_italic_variables     | `false` | Make variables italic    |
+| rasmus_bold_conditionals    | `false` | Make conditional bold    |
+| rasmus_bold_comments        | `false` | Make comments bold       |
+| rasmus_bold_keywords        | `false` | Make keywords bold       |
+| rasmus_bold_booleans        | `false` | Make booleans bold       |
+| rasmus_bold_functions       | `false` | Make functions bold      |
+| rasmus_bold_variables       | `false` | Make variables bold      |
+| rasmus_transparent          | `false` | Disable background color |
+| rasmus_variant              | `dark`  | Colorscheme variant      |
 
 ```lua
 -- Example config in lua
