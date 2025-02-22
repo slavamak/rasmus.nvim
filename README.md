@@ -147,8 +147,11 @@ colorscheme rasmus
 ## Extras
 
 - alacritty color theme: `extras/alacritty/rasmus.yaml`
-- kitty color theme: `extras/kitty/rasmus.conf`
+- foot color theme: `extras/foot/rasmus.ini`
+- ghostty color theme: `extras/ghostty/rasmus`
 - iterm color theme: `extras/iterm/rasmus.itermcolors`
+- kitty color theme: `extras/kitty/rasmus.conf`
+- warp color theme: `extras/warp/theme.yaml`
 
 ## Credits
 
